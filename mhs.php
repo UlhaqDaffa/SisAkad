@@ -59,7 +59,7 @@ include "template_admin/topbar.php";
                                 <td><?php echo $d['Nama_Mhs']; ?></td> 
                                 <td width="200px"> 
                                 <a class="btn btn-primary" href="edit_mhs.php?id=<?php echo $d['id']; ?>">Edit</a> 
-                                    <a class="btn btn-danger" href="hapus_siswa.php?id=<?php echo $d['id']; ?>">Hapus</a> 
+                                    <a class="btn btn-danger" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
                                 </td> 
                             </tr> 
                     <?php 
