@@ -5,7 +5,7 @@
 href="http://adminlte.io">Daffa Dhiya Ulhaq</a>.</strong> 
     All rights reserved. 
     <div class="float-right d-none d-sm-inline-block"> 
-      <b>Version</b> 0.5
+      <b>Version</b> 0.9.11
     </div> 
   </footer> 
 </div> 

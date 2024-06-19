@@ -17,7 +17,7 @@
  
                     <!-- <ul class="nav nav-treeview"> --> 
                 <li class="nav-item"> 
-                    <a href="Dashboard.php" class="nav-link <?= $thisPage == "Dashboard" ? "active" : '' ?>"> 
+                    <a href="dashboardMhs.php" class="nav-link <?= $thisPage == "Dashboard" ? "active" : '' ?>"> 
                         <i class="nav-icon fas fa-tachometer-alt"></i> 
                         <p>Dashboard</p> 
                     </a> 
@@ -26,7 +26,7 @@
                 </li> 
  
                 <li class="nav-item"> 
-                    <a href="jadwal.php" class="nav-link nav-link  <?= $thisPage == "Siswa" ? "active" : '' ?> "> 
+                    <a href="jadwal.php" class="nav-link nav-link  <?= $thisPage == "jadwal" ? "active" : '' ?> "> 
                         <i class="nav-icon fa fa-address-card"></i> 
                         <p> 
                             Jadwal Perkuliahan
@@ -35,13 +35,14 @@
                 </li> 
 
                 <li class="nav-item"> 
-                    <a href="jadwal.php" class="nav-link nav-link  <?= $thisPage == "Siswa" ? "active" : '' ?> "> 
+                    <a href="mhs.php" class="nav-link nav-link  <?= $thisPage == "mhs" ? "active" : '' ?> "> 
                         <i class="nav-icon fa fa-address-card"></i> 
                         <p> 
-                            Jadwal Perkuliahan
+                            Data Mahasiswa
                         </p> 
                     </a> 
                 </li> 
+
                 <li class="nav-item"> 
                     <a href="khs.php" class="nav-link nav-link  <?= $thisPage == "Menu" ? "active" : '' ?> "> 
                         <i class="nav-icon fas fa-table"></i> 
