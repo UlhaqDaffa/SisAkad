@@ -43,6 +43,38 @@ include "template_admin/topbar.php";
                     <label for="exampleInputPassword1">Nama Mahasiswa</label> 
                     <input type="text" class="form-control" name="Nama_Mhs" id="Nama_Mhs" placeholder="Nama Mahasiswa"  required> 
                   </div> 
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Jurusan</label> 
+                    <input type="text" class="form-control" name="jurusan" id="jurusan" placeholder="Jurusan"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Reguler</label> 
+                    <input type="text" class="form-control" name="reguler" id="reguler" placeholder="Reguler"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Semester</label> 
+                    <input type="text" class="form-control" name="semester" id="semester" placeholder="Semester"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Tanggal Lahir</label> 
+                    <input type="text" class="form-control" name="tglLahir" id="tglLahir" placeholder="Tanggal Lahir"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Email</label> 
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">No Telp</label> 
+                    <input type="text" class="form-control" name="noTlp" id="noTlp" placeholder="No Telp"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Status Mahasiswa</label> 
+                    <input type="text" class="form-control" name="statusMhs" id="statusMhs" placeholder="Status Mahasiswa"  required> 
+                  </div>
+                  <div class="form-group"> 
+                    <label for="exampleInputPassword1">Kelas</label> 
+                    <input type="text" class="form-control" name="kelas" id="kelas" placeholder="Kelas"  required> 
+                  </div>
                 </div> 
                 <div class="card-footer"> 
                   <button type="submit" class="btn btn-primary">Submit</button> 

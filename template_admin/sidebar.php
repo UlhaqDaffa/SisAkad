@@ -1,9 +1,8 @@
 <!-- Main Sidebar Container --> 
-<aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: 
-#3D8B48;"> 
+<aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #3D8B48;"> 
     <!-- Brand Logo --> 
     <div class="brand-link text-center"  style="background-color: #3D8B48;"> 
-        <span class="brand-text font-weight-light"><a >Akademik </a></span> 
+        <span class="brand-text font-weight-light"><a >MyUncip </a></span> 
     </div> 
  
     <!-- Sidebar --> 
@@ -26,7 +25,7 @@
                 </li> 
  
                 <li class="nav-item"> 
-                    <a href="jadwal.php" class="nav-link nav-link  <?= $thisPage == "jadwal" ? "active" : '' ?> "> 
+                    <a href="jadwal.php" class="nav-link <?= $thisPage == "jadwal" ? "active" : '' ?> "> 
                         <i class="nav-icon fa fa-address-card"></i> 
                         <p> 
                             Jadwal Perkuliahan
@@ -35,7 +34,7 @@
                 </li> 
 
                 <li class="nav-item"> 
-                    <a href="mhs.php" class="nav-link nav-link  <?= $thisPage == "mhs" ? "active" : '' ?> "> 
+                    <a href="mhs.php" class="nav-link  <?= $thisPage == "mahasiswa" ? "active" : '' ?> "> 
                         <i class="nav-icon fa fa-address-card"></i> 
                         <p> 
                             Data Mahasiswa
@@ -44,14 +43,14 @@
                 </li> 
 
                 <li class="nav-item"> 
-                    <a href="khs.php" class="nav-link nav-link  <?= $thisPage == "Menu" ? "active" : '' ?> "> 
+                    <a href="nilai.php" class="nav-link  <?= $thisPage == "nilai" ? "active" : '' ?> "> 
                         <i class="nav-icon fas fa-table"></i> 
                         <p> 
-                            Data Nilai KHS
+                            Rangkuman Nilai
                         </p> 
                     </a> 
                 </li> 
-                </ul> 
+            </ul> 
         </nav> 
         <!-- /.sidebar-menu --> 
     </div> 

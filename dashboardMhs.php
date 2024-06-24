@@ -31,7 +31,7 @@ include "template_admin/topbar.php";
                 <h5 class="card-title">Selamat Datang</h5> 
  
                 <p class="card-text"> 
-                    Selamat Datang Di Halaman Website Akademik Universitas Negeri Ciputat
+                    Selamat Datang Di MyUncip 
                 </p> 
               </div> 
             </div> 

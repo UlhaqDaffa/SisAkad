@@ -2,7 +2,7 @@
  
 include "koneksi.php"; 
  
-$thisPage = "Siswa"; 
+$thisPage = "mahasiswa"; 
  
 include "template_admin/header.php"; 
 include "template_admin/sidebar.php"; 
@@ -43,20 +43,36 @@ include "template_admin/topbar.php";
                         <th>No</th> 
                         <th>NIM</th> 
                         <th>Nama Mahasiswa</th> 
-                        <th>Opsi</th> 
+                        <th>Jurusan</th> 
+                        <th>Reguler</th> 
+                        <th>Semester</th> 
+                        <th>Tanggal Lahir</th> 
+                        <th>Email</th> 
+                        <th>No Telp</th> 
+                        <th>Status</th> 
+                        <th>Kelas</th> 
+                        <th>Opsi</th>
                     </tr> 
                     </thead> 
                     <tbody> 
                     <?php 
                         $no = 1; 
-                        $sql = "select * from mhs "; 
+                        $sql = "select * from datamhs "; 
                         $hasil = mysqli_query($con, $sql); 
                         while($d = mysqli_fetch_array($hasil)){ 
                             ?> 
                             <tr> 
                                 <td width="10px"><?php echo $no++; ?></td> 
                                 <td><?php echo $d['NIM']; ?></td> 
-                                <td><?php echo $d['Nama_Mhs']; ?></td> 
+                                <td><?php echo $d['namaMhs']; ?></td> 
+                                <td><?php echo $d['jurusan']; ?></td> 
+                                <td><?php echo $d['reguler']; ?></td> 
+                                <td><?php echo $d['semester']; ?></td> 
+                                <td><?php echo $d['tglLahir']; ?></td> 
+                                <td><?php echo $d['email']; ?></td> 
+                                <td><?php echo $d['noTlp']; ?></td> 
+                                <td><?php echo $d['statusMhs']; ?></td> 
+                                <td><?php echo $d['kelas']; ?></td> 
                                 <td width="200px"> 
                                 <a class="btn btn-primary" href="edit_mhs.php?id=<?php echo $d['id']; ?>">Edit</a> 
                                     <a class="btn btn-danger" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
