@@ -1,12 +1,12 @@
 <?php 
  
-include "koneksi.php"; 
+include "../koneksi.php"; 
  
 $thisPage = "Dashboard"; 
  
-include "template_admin/header.php"; 
-include "template_admin/sidebar.php"; 
-include "template_admin/topbar.php"; 
+include "sidebarAdmin.php"; 
+include "../template/header.php"; 
+include "topbar.php"; 
  
 ?> 
 <!-- Content Wrapper. Contains page content --> 
@@ -31,7 +31,7 @@ include "template_admin/topbar.php";
                 <h5 class="card-title">Selamat Datang</h5> 
  
                 <p class="card-text"> 
-                    Selamat Datang Di MyUncip 
+                    Dashboard admin 
                 </p> 
               </div> 
             </div> 
@@ -43,5 +43,5 @@ include "template_admin/topbar.php";
       </div><!-- /.container-fluid --> 
     </div>
     <?php 
-    include "template_admin/footer.php"; 
+    include "../template/footer.php"; 
     ?> 

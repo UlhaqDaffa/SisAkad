@@ -34,19 +34,28 @@
                 </li> 
 
                 <li class="nav-item"> 
-                    <a href="mhs.php" class="nav-link  <?= $thisPage == "mahasiswa" ? "active" : '' ?> "> 
+                    <a href="profilMhs.php" class="nav-link  <?= $thisPage == "profil" ? "active" : '' ?> "> 
                         <i class="nav-icon fa fa-address-card"></i> 
                         <p> 
-                            Data Mahasiswa
+                            Profil
                         </p> 
                     </a> 
                 </li> 
 
                 <li class="nav-item"> 
-                    <a href="nilai.php" class="nav-link  <?= $thisPage == "nilai" ? "active" : '' ?> "> 
+                    <a href="nilaiMhs.php" class="nav-link  <?= $thisPage == "nilai" ? "active" : '' ?> "> 
                         <i class="nav-icon fas fa-table"></i> 
                         <p> 
                             Rangkuman Nilai
+                        </p> 
+                    </a> 
+                </li>
+                
+                <li class="nav-item"> 
+                    <a href="logout.php" class="nav-link"> 
+                        <i class="nav-icon fa fa-outdent"></i> 
+                        <p> 
+                            Logout
                         </p> 
                     </a> 
                 </li> 

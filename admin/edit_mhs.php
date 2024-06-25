@@ -1,10 +1,10 @@
 <?php 
  
- include "koneksi.php"; 
+ include "../koneksi.php"; 
  
- include "template_admin/header.php"; 
- include "template_admin/sidebar.php"; 
- include "template_admin/topbar.php"; 
+ include "../template/header.php"; 
+ include "sidebarAdmin.php"; 
+ include "topbar.php"; 
   
  ?> 
  <!-- Content Wrapper. Contains page content --> 
@@ -96,5 +96,5 @@
       </div> 
    
 <?php 
-  include "template_admin/footer.php"; 
+  include "../template/footer.php"; 
 ?>

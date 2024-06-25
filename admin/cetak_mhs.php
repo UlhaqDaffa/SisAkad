@@ -1,6 +1,6 @@
 <?php
 // Memanggil library FPDF
-require('fpdf.php');
+require('../fpdf.php');
 
 // Instansiasi objek dan memberikan pengaturan halaman PDF
 $pdf = new FPDF('l','mm','A3');
@@ -32,7 +32,7 @@ $pdf->Cell(25,10,'Kelas',1,1,'C');
 $pdf->SetFont('Arial','',10);
 
 // Koneksi ke database (sesuaikan dengan konfigurasi Anda)
-include 'koneksi.php';
+include '../koneksi.php';
 
 // Query data mahasiswa
 $mhs = mysqli_query($con, "SELECT * FROM datamhs");

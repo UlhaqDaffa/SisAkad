@@ -1,12 +1,12 @@
 <?php 
  
-include "koneksi.php"; 
+include "../koneksi.php"; 
  
 $thisPage = "mahasiswa"; 
  
-include "template_admin/header.php"; 
-include "template_admin/sidebar.php"; 
-include "template_admin/topbar.php"; 
+include "../template/header.php"; 
+include "sidebarAdmin.php"; 
+include "topbar.php"; 
  
 ?> 
 <!-- Content Wrapper. Contains page content --> 
@@ -74,8 +74,8 @@ include "template_admin/topbar.php";
                                 <td><?php echo $d['statusMhs']; ?></td> 
                                 <td><?php echo $d['kelas']; ?></td> 
                                 <td width="200px"> 
-                                <a class="btn btn-primary" href="edit_mhs.php?id=<?php echo $d['id']; ?>">Edit</a> 
-                                    <a class="btn btn-danger" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
+                                  <a class="btn btn-primary" href="edit_mhs.php?id=<?php echo $d['id']; ?>">Edit</a> 
+                                  <a class="btn btn-danger" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
                                 </td> 
                             </tr> 
                     <?php 
@@ -98,5 +98,5 @@ include "template_admin/topbar.php";
        
  
     <?php 
-    include "template_admin/footer.php"; 
+    include "../template/footer.php"; 
     ?>

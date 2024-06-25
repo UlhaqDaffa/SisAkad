@@ -1,11 +1,11 @@
 <?php
-include "koneksi.php";
+include "../koneksi.php";
 
 $thisPage = "jadwal";
 
-include "template_admin/header.php";
-include "template_admin/sidebar.php";
-include "template_admin/topbar.php";
+include "../template/header.php";
+include "sidebarMhs.php";
+include "topbar.php";
 
 // Query untuk mengambil data jadwal matakuliah
 $query = "SELECT m.kodeMK, m.namaMK AS namaMatakuliah, d.namaDosen AS namaDosen, j.hari, j.jamMulai, j.jamSelesai, j.ruang
@@ -78,5 +78,5 @@ $result = mysqli_query($con, $query);
 <!-- /.content-wrapper -->
 
 <?php
-include "template_admin/footer.php";
+include "../template/footer.php";
 ?>

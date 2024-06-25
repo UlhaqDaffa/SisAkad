@@ -1,12 +1,12 @@
 <?php 
  
-include "koneksi.php"; 
+include "../koneksi.php"; 
  
 $thisPage = "Dashboard"; 
  
-include "template_admin/header.php"; 
-include "template_admin/sidebar.php"; 
-include "template_admin/topbar.php"; 
+include "../template/header.php"; 
+include "sidebarMhs.php"; 
+include "topbar.php"; 
  
 ?> 
 <!-- Content Wrapper. Contains page content --> 
@@ -43,5 +43,5 @@ include "template_admin/topbar.php";
       </div><!-- /.container-fluid --> 
     </div>
     <?php 
-    include "template_admin/footer.php"; 
+    include "../template/footer.php"; 
     ?> 
