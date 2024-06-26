@@ -65,7 +65,7 @@ include "topbar.php";
                 </div>
                 <div class="form-group"> 
                   <label for="nilaiAngka">Nilai Angka</label> 
-                  <input type="number" class="form-control" name="nilaiAngka" id="nilaiAngka" placeholder="Nilai Angka (0-100)" required> 
+                  <input type="decimal" class="form-control" name="nilaiAngka" id="nilaiAngka" placeholder="Nilai Angka (0-5)" required> 
                 </div>
               </div> 
               <div class="card-footer"> 

@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #3D8B48;"> 
     <!-- Brand Logo --> 
     <div class="brand-link text-center"  style="background-color: #3D8B48;"> 
-        <span class="brand-text font-weight-light"><a >MyUncip </a></span> 
+        <span class="brand-text font-weight-light"><a >MyUncip <span style="color: red; font-weight: normal;"><i> Admin</i></span></a></span> 
     </div> 
  
     <!-- Sidebar --> 
@@ -26,7 +26,7 @@
  
                 <li class="nav-item"> 
                     <a href="jadwal.php" class="nav-link <?= $thisPage == "jadwal" ? "active" : '' ?> "> 
-                        <i class="nav-icon fa fa-address-card"></i> 
+                        <i class="nav-icon fa fa-calendar"></i> 
                         <p> 
                             Jadwal Perkuliahan
                         </p> 
@@ -52,7 +52,7 @@
                 </li>
                 
                 <li class="nav-item"> 
-                    <a href="logout.php" class="nav-link"> 
+                    <a href="logout.php" class="nav-link" onclick="return confirm('Apakah Anda yakin ingin keluar?')"> 
                         <i class="nav-icon fa fa-outdent"></i> 
                         <p> 
                             Logout
@@ -65,3 +65,14 @@
     </div> 
     <!-- /.sidebar --> 
 </aside>
+
+<!-- Script untuk menampilkan alert saat logout -->
+<script>
+    $(document).ready(function() {
+        // Menggunakan event click pada link Logout
+        $('a[href="logout.php"]').click(function() {
+            // Menampilkan alert konfirmasi menggunakan Bootstrap
+            return confirm('Apakah Anda yakin ingin keluar?');
+        });
+    });
+</script>

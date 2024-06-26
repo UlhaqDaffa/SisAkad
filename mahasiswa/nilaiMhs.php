@@ -9,13 +9,12 @@ if (!isset($_SESSION['idMahasiswa'])) {
 }
 
 include "../koneksi.php";
+
 // ID Mahasiswa dari session
 $id_mahasiswa = $_SESSION['idMahasiswa'];
 
-// Include file koneksi.php untuk menghubungkan ke database
-
 // Query untuk mengambil data nilai, matakuliah, dan mahasiswa sesuai ID mahasiswa yang login
-$query = "SELECT m.kodeMK, m.namaMK, n.nilaiHuruf, n.nilaiAngka, n.sks
+$query = "SELECT m.kodeMK, m.namaMK, n.nilaiHuruf, n.nilaiAngka, m.jumlahSks
           FROM nilai n
           INNER JOIN matakuliah m ON n.idMatakuliah = m.id
           WHERE n.idMahasiswa = '$id_mahasiswa'";
@@ -30,7 +29,7 @@ $total_sks = 0;
 $total_nilai = 0;
 
 // Memulai output HTML
-$thisPage = "Rangkuman Nilai";
+$thisPage = "nilai";
 include "../template/header.php"; // Header template
 include "sidebarMhs.php"; // Sidebar template
 include "topbar.php"; // Topbar template
@@ -77,17 +76,22 @@ include "topbar.php"; // Topbar template
                                             echo "<td>{$row['namaMK']} ({$row['kodeMK']})</td>";
                                             echo "<td>{$row['nilaiHuruf']}</td>";
                                             echo "<td>{$row['nilaiAngka']}</td>";
-                                            echo "<td>{$row['sks']}</td>";
+                                            echo "<td>{$row['jumlahSks']}</td>";
                                             echo "</tr>";
 
                                             // Menambahkan nilai angka dan total SKS
-                                            $total_nilai += ($row['nilaiAngka'] * $row['sks']);
-                                            $total_sks += $row['sks'];
+                                            $total_nilai += ($row['nilaiAngka'] * $row['jumlahSks']);
+                                            $total_sks += $row['jumlahSks'];
                                         }
 
                                         // Menghitung IPK
                                         if ($total_sks > 0) {
-                                            $ipk = number_format($total_nilai / $total_sks, 2);
+                                            $ipk = $total_nilai / $total_sks;
+                                            // Validasi IPK tidak melebihi 4.00
+                                            if ($ipk > 4.00) {
+                                                $ipk = 4.00;
+                                            }
+                                            $ipk = number_format($ipk, 2);
                                         } else {
                                             $ipk = 0.00;
                                         }
