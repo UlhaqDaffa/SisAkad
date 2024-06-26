@@ -1,4 +1,12 @@
 <?php 
+// Mulai sesi
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    exit();
+}
 include "../koneksi.php"; 
 
 $thisPage = "Dashboard"; 

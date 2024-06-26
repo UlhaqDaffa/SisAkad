@@ -16,14 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = mysqli_fetch_assoc($result);
             $_SESSION['username'] = $username;
             $_SESSION['role'] = 'admin';
+            $_SESSION['id'] = $row['id'];
             header("Location: admin/dashboardAdmin.php");
             exit();
         } else {
-            $error = "Username atau password salah!";
+            header("Location: login.php?pesan=gagal");
+            exit();
         }
     } elseif ($role == 'mahasiswa') {
         // Query untuk mencari mahasiswa berdasarkan username dan password
-        $query = "SELECT * FROM loginmhs where username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM loginmhs WHERE username = '$username' AND password = '$password'";
         $result = mysqli_query($con, $query);
 
         if (mysqli_num_rows($result) == 1) {
@@ -35,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: mahasiswa/dashboardMhs.php");
             exit();
         } else {
-            $error = "Username atau password salah!";
+            header("Location: login.php?pesan=gagal");
+            exit();
         }
     }
 }

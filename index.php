@@ -19,8 +19,8 @@
 <body>
   
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">MyUniversitas Ciputat</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Universitas Ciputat</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,14 +34,14 @@
   </nav>
 
   <!-- Content -->
-  <div class="container mt-4">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-md-8 mx-auto">
         <div class="jumbotron">
-          <h1 class="display-4">Welcome to MyUniversitas Ciputat!</h1>
+          <h1 class="display-4">Welcome to MyUncip!</h1>
           <p class="lead"></p>
           <hr class="my-4" style="border-top: 4px solid green;">
-          <p>See your grades, schedule, and more.</p>
+          <p>Academic system for one of the best university in the entire Tangerang Selatan, here you can see your grades, schedule, and more.</p>
           <a class="btn btn-primary btn-lg" href="login.php" role="button">Login Here</a>
         </div>
       </div>

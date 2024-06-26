@@ -1,5 +1,13 @@
 <?php 
 include '../koneksi.php'; 
+// Mulai sesi
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    exit();
+}
 $id = $_POST['id']; 
 $NIM = $_POST['NIM']; 
 $Nama_Mhs = $_POST['namaMhs']; 

@@ -1,7 +1,14 @@
 <?php 
  
  include "../koneksi.php"; 
- 
+ // Mulai sesi
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    exit();
+}
  include "../template/header.php"; 
  include "sidebarAdmin.php"; 
  include "topbar.php"; 

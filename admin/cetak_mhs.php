@@ -2,6 +2,15 @@
 // Memanggil library FPDF
 require('../fpdf.php');
 
+// Mulai sesi
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
 // Instansiasi objek dan memberikan pengaturan halaman PDF
 $pdf = new FPDF('l','mm','A3');
 

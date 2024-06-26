@@ -10,7 +10,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'mahasiswa') {
 }
 
 // Ambil data mahasiswa dari session
-$idMahasiswa = $_SESSION['id'];
+$idMahasiswa = $_SESSION['idMahasiswa'];
 
 // Query untuk mengambil data mahasiswa berdasarkan ID
 $query_mahasiswa = "SELECT * FROM datamhs WHERE id = '$idMahasiswa'";
@@ -24,10 +24,10 @@ if ($result_mahasiswa && mysqli_num_rows($result_mahasiswa) == 1) {
 }
 
 // Query untuk mengambil nilai mahasiswa dari tabel nilai
-$query_nilai = "SELECT m.kodeMK, m.namaMK, n.nilaiHuruf, n.nilaiAngka, n.sks
-               FROM nilai n
-               INNER JOIN matakuliah m ON n.idMatakuliah = m.id
-               WHERE n.idMahasiswa = '$idMahasiswa'";
+$query_nilai = "SELECT m.kodeMK, m.namaMK, n.nilaiHuruf, n.nilaiAngka, m.jumlahSks
+          FROM nilai n
+          INNER JOIN matakuliah m ON n.idMatakuliah = m.id
+          WHERE n.idMahasiswa = '$idMahasiswa'";
 $result_nilai = mysqli_query($con, $query_nilai);
 
 // Menghitung IPK berdasarkan nilai yang didapatkan
@@ -35,8 +35,8 @@ $total_sks = 0;
 $total_nilai = 0;
 
 while ($row_nilai = mysqli_fetch_assoc($result_nilai)) {
-    $total_nilai += ($row_nilai['nilaiAngka'] * $row_nilai['sks']);
-    $total_sks += $row_nilai['sks'];
+    $total_nilai += ($row_nilai['nilaiAngka'] * $row_nilai['jumlahSks']);
+    $total_sks += $row_nilai['jumlahSks'];
 }
 
 // Menghitung IPK
@@ -86,7 +86,7 @@ mysqli_data_seek($result_nilai, 0); // Reset pointer result set
 while ($row_nilai = mysqli_fetch_assoc($result_nilai)) {
     $pdf->Cell(30,10,$row_nilai['kodeMK'],1,0,'C');
     $pdf->Cell(90,10,$row_nilai['namaMK'],1,0,'L');
-    $pdf->Cell(20,10,$row_nilai['sks'],1,0,'C');
+    $pdf->Cell(20,10,$row_nilai['jumlahSks'],1,0,'C');
     $pdf->Cell(25,10,$row_nilai['nilaiHuruf'],1,0,'C');
     $pdf->Cell(25,10,$row_nilai['nilaiAngka'],1,1,'C');
 }

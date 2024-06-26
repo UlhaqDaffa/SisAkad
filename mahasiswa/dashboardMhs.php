@@ -17,7 +17,7 @@ include "topbar.php";
 $id_mahasiswa = $_SESSION['idMahasiswa'];
 
 // Query untuk mendapatkan data nilai
-$query = "SELECT m.namaMK, n.nilaiAngka, n.sks, d.semester
+$query = "SELECT m.namaMK, n.nilaiAngka, m.jumlahSks, d.semester
           FROM nilai n
           INNER JOIN matakuliah m ON n.idMatakuliah = m.id
           INNER JOIN datamhs d ON n.idMahasiswa = d.id
@@ -28,21 +28,21 @@ $result = mysqli_query($con, $query);
 // Menginisialisasi data untuk chart
 $matakuliah = [];
 $nilaiAngka = [];
-$sks = 0;
 $total_nilai = 0;
+$total_sks = 0;
 $semester = "";
 
 while ($row = mysqli_fetch_assoc($result)) {
     $matakuliah[] = $row['namaMK'];
     $nilaiAngka[] = $row['nilaiAngka'];
-    $total_nilai += $row['nilaiAngka'] * $row['sks'];
-    $sks += $row['sks'];
+    $total_nilai += $row['nilaiAngka'] * $row['jumlahSks'];
+    $total_sks += $row['jumlahSks'];
     $semester = $row['semester'];
 }
 
 // Menghitung IPK
-if ($sks > 0) {
-    $ipk = number_format($total_nilai / $sks, 2);
+if ($total_sks > 0) {
+    $ipk = number_format($total_nilai / $total_sks, 2);
 } else {
     $ipk = 0.00;
 }
@@ -118,7 +118,6 @@ $visiMisi = "
           <div class="col"> 
             <div class="card"> 
               <div class="card-body"> 
-                <h5 class="card-title">Selamat Datang</h5> 
                 <p class="card-text"> 
                      Selamat Datang Di Halaman Website Akademik Universitas Negeri Ciputat
                 </p> 
@@ -131,12 +130,12 @@ $visiMisi = "
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Nilai, IPK, dan Posisi Semester</h5>
+                <h5 class="card-title">Nilai Summary</h5>
               </div>
               <div class="card-body">
                 <canvas id="nilaiChart"></canvas>
-                <p>IPK: <?php echo $ipk; ?></p>
-                <p>Posisi Semester: <?php echo $semester; ?></p>
+                <p>IPK : <?php echo $ipk ?></p>
+                <p>Anda Sekarang berada diSemester : <?php echo $semester; ?></p>
               </div>
             </div>
           </div>
@@ -176,29 +175,54 @@ $visiMisi = "
   $(document).ready(function(){
     var ctx = document.getElementById('nilaiChart').getContext('2d');
     var nilaiChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'doughnut', // Mengubah jenis chart menjadi doughnut
       data: {
         labels: <?php echo json_encode($matakuliah); ?>,
         datasets: [{
-          label: 'Nilai Angka',
+label: 'Nilai Angka',
           data: <?php echo json_encode($nilaiAngka); ?>,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
           borderWidth: 1
         }]
       },
       options: {
-        scales: {
-          x: {
-            display: false
-          },
-          y: {
-            beginAtZero: true
-          }
-        },
         plugins: {
           legend: {
-            display: false
+            position: 'right',
+          },
+          tooltip: {
+            callbacks: {
+              label: function(tooltipItem) {
+                return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2); // Menampilkan nilai dengan 2 angka desimal
+              }
+            }
           }
         }
       }

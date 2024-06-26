@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #3D8B48;"> 
     <!-- Brand Logo --> 
     <div class="brand-link text-center"  style="background-color: #3D8B48;"> 
-        <span class="brand-text font-weight-light"><a >MyUncip <span style="color: red; font-weight: normal;"><i> Admin</i></span></a></span> 
+        <span class="brand-text font-weight-light"><a >MyUncip </a></span> 
     </div> 
  
     <!-- Sidebar --> 

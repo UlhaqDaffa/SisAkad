@@ -24,7 +24,12 @@
         </div>
         <?php
         if (isset($_GET['pesan']) && $_GET['pesan'] == "gagal") {
-            echo "<div class='alert' style='color:red;'>Username atau Password salah!</div>";
+            echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                    Username atau Password salah!
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>";
         }
         ?>
         <!-- /.login-logo -->
@@ -77,4 +82,3 @@
     <script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>
-

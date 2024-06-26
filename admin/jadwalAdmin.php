@@ -1,6 +1,15 @@
 <?php
 include "../koneksi.php";
 
+// Mulai sesi
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
 $thisPage = "jadwal";
 
 include "../template/header.php";
