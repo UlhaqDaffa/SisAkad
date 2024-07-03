@@ -40,8 +40,20 @@ function getMatakuliahOptions($con, $selected_id = null) {
     return $options;
 }
 
+// Fungsi untuk mendapatkan daftar semester
+function getSemesterOptions($con, $selected_semester = null) {
+    $options = '';
+    $query = "SELECT DISTINCT semester FROM matakuliah";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $selected = ($row['semester'] == $selected_semester) ? 'selected' : '';
+        $options .= "<option value='{$row['semester']}' $selected>Semester {$row['semester']}</option>";
+    }
+    return $options;
+}
+
 // Handling Edit and Update Logic
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     $id_jadwal = $_POST['id_jadwal'];
     $idMatakuliah = $_POST['idMatakuliah'];
     $idDosen = $_POST['idDosen'];
@@ -54,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result_update = mysqli_query($con, $query_update);
 
     if ($result_update) {
-        // Redirect or show success message
         header("Location: jadwal.php");
         exit();
     } else {
@@ -62,11 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Query untuk mengambil data jadwal matakuliah
+// Menangani pemilihan semester
+$selected_semester = isset($_POST['semester']) ? $_POST['semester'] : '';
+
+// Query untuk mengambil data jadwal matakuliah berdasarkan semester
 $query_jadwal = "SELECT j.id, m.id AS idMatakuliah, m.kodeMK, m.namaMK AS namaMatakuliah, d.id AS idDosen, d.namaDosen, j.hari, j.jamMulai, j.jamSelesai, j.ruang
                  FROM jadwal j
                  JOIN matakuliah m ON j.idMatakuliah = m.id
                  JOIN dosen d ON j.idDosen = d.id";
+if ($selected_semester) {
+    $query_jadwal .= " WHERE m.semester = '$selected_semester'";
+}
 $result_jadwal = mysqli_query($con, $query_jadwal);
 
 ?>
@@ -90,6 +107,17 @@ $result_jadwal = mysqli_query($con, $query_jadwal);
         <div class="col">
           <div class="card">
             <div class="card-body">
+              <!-- Form untuk memilih semester -->
+              <form method="POST" action="jadwalAdmin.php">
+                <div class="form-group">
+                  <label for="semester">Pilih Semester:</label>
+                  <select class="form-control" id="semester" name="semester" onchange="this.form.submit()">
+                    <option value="">-- Semua Semester --</option>
+                    <?php echo getSemesterOptions($con, $selected_semester); ?>
+                  </select>
+                </div>
+              </form>
+
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>
@@ -144,6 +172,12 @@ $result_jadwal = mysqli_query($con, $query_jadwal);
                       echo "</select>";
                       echo "</div>";
                       echo "<div class='form-group'>";
+                      echo "<label>Semester</label>";
+                      echo "<select class='form-control' name='semester'>";
+                      echo getSemesterOptions($con, $row['semester']);
+                      echo "</select>";
+                      echo "</div>";
+                      echo "<div class='form-group'>";
                       echo "<label>Hari</label>";
                       echo "<input type='text' class='form-control' name='hari' value='{$row['hari']}'>";
                       echo "</div>";
@@ -162,7 +196,7 @@ $result_jadwal = mysqli_query($con, $query_jadwal);
                       echo "</div>";
                       echo "<div class='modal-footer'>";
                       echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Tutup</button>";
-                      echo "<button type='submit' class='btn btn-primary'>Simpan Perubahan</button>";
+                      echo "<button type='submit' name='update' class='btn btn-primary'>Simpan Perubahan</button>";
                       echo "</div>";
                       echo "</form>";
                       echo "</div>";

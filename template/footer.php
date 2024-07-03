@@ -42,6 +42,7 @@ href="http://adminlte.io">Daffa Dhiya Ulhaq</a>.</strong>
 <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> 
 <!-- AdminLTE App --> 
 <script src="../dist/js/adminlte.js"></script> 
+<script src="../dist/js/adminlte.min.js"></script> 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) --> 
 <script src="d../ist/js/pages/dashboard.js"></script> 
 <!-- AdminLTE for demo purposes --> 

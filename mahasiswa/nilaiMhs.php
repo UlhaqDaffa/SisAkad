@@ -30,9 +30,9 @@ $total_nilai = 0;
 
 // Memulai output HTML
 $thisPage = "nilai";
-include "../template/header.php"; // Header template
-include "sidebarMhs.php"; // Sidebar template
-include "topbar.php"; // Topbar template
+include "../template/header.php"; 
+include "sidebarMhs.php"; 
+include "topbar.php"; 
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -87,7 +87,7 @@ include "topbar.php"; // Topbar template
                                         // Menghitung IPK
                                         if ($total_sks > 0) {
                                             $ipk = $total_nilai / $total_sks;
-                                            // Validasi IPK tidak melebihi 4.00
+                                            // Validasi IPK tidak akan melebihi 4.00
                                             if ($ipk > 4.00) {
                                                 $ipk = 4.00;
                                             }

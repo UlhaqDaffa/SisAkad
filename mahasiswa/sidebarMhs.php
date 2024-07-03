@@ -1,3 +1,7 @@
+<?php
+include "../template/header.php"; 
+?>
+
 <!-- Main Sidebar Container --> 
 <aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #3D8B48;"> 
     <!-- Brand Logo --> 

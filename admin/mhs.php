@@ -84,7 +84,7 @@ include "topbar.php";
                                 <td><?php echo $d['kelas']; ?></td> 
                                 <td width="200px"> 
                                   <a class="btn btn-primary" href="edit_mhs.php?id=<?php echo $d['id']; ?>">Edit</a> 
-                                  <a class="btn btn-danger" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
+                                  <a class="btn btn-danger btn-delete" href="hapus_mhs.php?id=<?php echo $d['id']; ?>">Hapus</a> 
                                 </td> 
                             </tr> 
                     <?php 
@@ -104,8 +104,21 @@ include "topbar.php";
         <!-- /.row --> 
       </div> 
  
-       
- 
     <?php 
     include "../template/footer.php"; 
-    ?>
+    ?> 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var deleteButtons = document.querySelectorAll('.btn-delete');
+    
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            var confirmation = confirm('Apakah Anda yakin ingin menghapus data ini?');
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+});
+</script>
